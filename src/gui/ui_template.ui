@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1119</width>
+    <height>862</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="MyGraphicView" name="graphicsView"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1119</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>文件</string>
+    </property>
+    <addaction name="actionOpen_RS_Image"/>
+    <addaction name="actionOpen_UAV_Image"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>工具</string>
+    </property>
+    <addaction name="actionStart"/>
+    <addaction name="actionRestart"/>
+    <addaction name="actionPan_Zoom"/>
+    <addaction name="actionEdit"/>
+    <addaction name="actionScale"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_2"/>
+  </widget>
+  <widget class="MyStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>LeftToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionStart"/>
+   <addaction name="actionRestart"/>
+   <addaction name="actionScale"/>
+   <addaction name="actionPan_Zoom"/>
+   <addaction name="actionEdit"/>
+  </widget>
+  <action name="actionOpen_RS_Image">
+   <property name="text">
+    <string>Open RS Image</string>
+   </property>
+  </action>
+  <action name="actionOpen_UAV_Image">
+   <property name="text">
+    <string>Open UAV Image</string>
+   </property>
+  </action>
+  <action name="actionStart">
+   <property name="icon">
+    <iconset>
+     <normaloff>icon/play.ico</normaloff>icon/play.ico</iconset>
+   </property>
+   <property name="text">
+    <string>开始</string>
+   </property>
+  </action>
+  <action name="actionRestart">
+   <property name="icon">
+    <iconset>
+     <normaloff>icon/stop.ico</normaloff>icon/stop.ico</iconset>
+   </property>
+   <property name="text">
+    <string>重启</string>
+   </property>
+  </action>
+  <action name="actionEdit">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>icon/application.ico</normaloff>icon/application.ico</iconset>
+   </property>
+   <property name="text">
+    <string>编辑模式</string>
+   </property>
+  </action>
+  <action name="actionScale">
+   <property name="icon">
+    <iconset>
+     <normaloff>icon/scale.svg</normaloff>icon/scale.svg</iconset>
+   </property>
+   <property name="text">
+    <string>1：1</string>
+   </property>
+  </action>
+  <action name="actionPan_Zoom">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>icon/pan-tool.svg</normaloff>icon/pan-tool.svg</iconset>
+   </property>
+   <property name="text">
+    <string>平移缩放</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MyGraphicView</class>
+   <extends>QGraphicsView</extends>
+   <header>myGraphicView</header>
+  </customwidget>
+  <customwidget>
+   <class>MyStatusBar</class>
+   <extends>QStatusBar</extends>
+   <header>myStatusBar</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

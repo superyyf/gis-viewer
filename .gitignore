@@ -3,6 +3,13 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+data/
+ocr/
+match/
+
+# 忽略所有用于测试的图片
+*.{png,jpg,JPG,tif,tiff}
+
 # C extensions
 *.so
 
