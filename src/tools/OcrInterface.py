@@ -18,14 +18,16 @@ def detectText(img_path):
     print(txts)
     return txts
 
-
 def textParser(str_text):
+    str_whole = ''
+    for s in str_text:
+        str_whole = str_whole + str(s)
+
     str1 = ''
-    if len(str_text) != 0:
-        for line in str_text:
-            for ch in line:
-                if ch.isdigit() or ch == 'N' or ch == 'E':
-                    str1 += ch
+    if len(str_whole) != 0:
+        for ch in str_whole:
+            if ch.isdigit() or ch == 'N' or ch == 'E':
+                str1 += ch
 
     N_num = str1.index('N')
     E_num = str1.index('E')
@@ -33,12 +35,12 @@ def textParser(str_text):
     numE = [0, 0, 0]
     numE[0] = float(str1[E_num + 1:E_num + 4])
     numE[1] = float(str1[E_num + 4:E_num + 6]) / 60
-    numE[2] = float(str1[E_num + 6:N_num]) / 3600
+    numE[2] = float(str1[E_num + 6:E_num + 8]) / 3600
 
     numN = [0, 0, 0]
     numN[0] = float(str1[N_num + 1:N_num + 4])
     numN[1] = float(str1[N_num + 4:N_num + 6]) / 60
-    numN[2] = float(str1[N_num + 6:]) / 3600
+    numN[2] = float(str1[N_num + 6:N_num + 8]) / 3600
 
     e = round(sum(numE), 4)
     n = round(sum(numN), 4)

@@ -1,8 +1,11 @@
+import os.path
+
 from osgeo import gdal, osr
 import numpy as np
 from PIL import Image, ImageQt
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import QPointF, QRect
+import imghdr
 
 
 class GeoTiffItem(object):
@@ -28,6 +31,32 @@ class GeoTiffItem(object):
             self.rgbRender = True
         band1 = self.dataset.GetRasterBand(1)
         self.dataType = gdal.GetDataTypeName(band1.DataType)
+        if self.dataType != 'Byte':
+            self.convert_to_byte()
+
+    def convert_to_byte(self):
+        base_name = os.path.basename(self.fileName)
+        output_file = base_name + '_8bit.tif'
+        if len(output_file) and os.path.isfile(output_file) and imghdr.what(output_file) == 'tiff':
+            self.fileName = output_file
+            self.get_image_info()
+            return
+        band1 = self.dataset.GetRasterBand(1)
+        band1.GetMetadata()
+        if band1.GetMinimum() is None or band1.GetMaximum() is None:
+            stats = band1.GetStatistics(True, True)
+        max_val = band1.GetMaximum()
+        min_val = band1.GetMinimum()
+        options_str = {
+            'format': 'GTiff',
+            'outputType': gdal.GDT_Byte,
+            'scaleParams': [min_val, max_val, 0, 255]
+        }
+
+        gdal.Translate(output_file, self.fileName, options=options_str)
+        self.fileName = output_file
+        self.get_image_info()
+        return
 
     def get_image_byte(self, real_rect, show_rect):
         if self.rgbRender:

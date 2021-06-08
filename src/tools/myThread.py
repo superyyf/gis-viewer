@@ -1,7 +1,7 @@
 import time
 from PyQt5.QtCore import QThread, QPoint, pyqtSignal
 from src.tools.OcrInterface import detectText, textParser
-from src.match.cnnmatch import start_match
+from src.match.match import match
 
 
 class MyBuildOverviewThread(QThread):
@@ -29,7 +29,7 @@ class MyMatchThread(QThread):
         rs_image = 'D:\project\gis-viewer\data\\01.jpg'
         uav_image = 'D:\project\gis-viewer\data\\02.jpg'
 
-        target = start_match(rs_image, uav_image)
+        target = match(rs_image, uav_image)
         self.target = self.imageItem.clipROI.topLeft() + QPoint(target[0], target[1])
         self.targetSignal.emit(self.target)
 

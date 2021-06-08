@@ -45,6 +45,7 @@
     <addaction name="actionPan_Zoom"/>
     <addaction name="actionEdit"/>
     <addaction name="actionScale"/>
+    <addaction name="actionEdit_Win"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
@@ -65,15 +66,22 @@
    <addaction name="actionScale"/>
    <addaction name="actionPan_Zoom"/>
    <addaction name="actionEdit"/>
+   <addaction name="actionEdit_Win"/>
   </widget>
   <action name="actionOpen_RS_Image">
    <property name="text">
-    <string>Open RS Image</string>
+    <string>打开遥感图像</string>
+   </property>
+   <property name="toolTip">
+    <string>打开遥感图像</string>
    </property>
   </action>
   <action name="actionOpen_UAV_Image">
    <property name="text">
-    <string>Open UAV Image</string>
+    <string>打开无人机图像</string>
+   </property>
+   <property name="toolTip">
+    <string>打开无人机图像</string>
    </property>
   </action>
   <action name="actionStart">
@@ -100,7 +108,7 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>icon/application.ico</normaloff>icon/application.ico</iconset>
+     <normaloff>icon/mActionToggleEditing.png</normaloff>icon/mActionToggleEditing.png</iconset>
    </property>
    <property name="text">
     <string>编辑模式</string>
@@ -109,10 +117,13 @@
   <action name="actionScale">
    <property name="icon">
     <iconset>
-     <normaloff>icon/scale.svg</normaloff>icon/scale.svg</iconset>
+     <normaloff>icon/mActionZoomToLayer.png</normaloff>icon/mActionZoomToLayer.png</iconset>
    </property>
    <property name="text">
-    <string>1：1</string>
+    <string>原始比例</string>
+   </property>
+   <property name="toolTip">
+    <string>切换到原始比例</string>
    </property>
   </action>
   <action name="actionPan_Zoom">
@@ -124,10 +135,22 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>icon/pan-tool.svg</normaloff>icon/pan-tool.svg</iconset>
+     <normaloff>icon/mActionPan.png</normaloff>icon/mActionPan.png</iconset>
    </property>
    <property name="text">
     <string>平移缩放</string>
+   </property>
+  </action>
+  <action name="actionEdit_Win">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>icon/square-edit.png</normaloff>icon/square-edit.png</iconset>
+   </property>
+   <property name="text">
+    <string>编辑小窗</string>
    </property>
   </action>
  </widget>
